@@ -27,8 +27,12 @@
   },
   "homepage": "https://github.com/informatif/api#readme",
   "dependencies": {
+    "@koa/cors": "^2.2.3",
     "dotenv": "^6.2.0",
-    "koa": "^2.7.0"
+    "koa": "^2.7.0",
+    "koa-router": "^7.4.0",
+    "node-fetch": "^2.3.0",
+    "rss-parser": "^3.6.2"
   },
   "devDependencies": {
     "nodemon": "^1.18.10"
