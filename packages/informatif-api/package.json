@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "description": "The Informatif API.",
-  "main": "index.js",
+  "main": "index.mjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node --experimental-modules index.mjs NODE_ENV=production",
+    "dev": "nodemon --experimental-modules index.mjs"
   },
   "repository": {
     "type": "git",
@@ -27,5 +28,8 @@
   "homepage": "https://github.com/informatif/api#readme",
   "dependencies": {
     "express": "^5.0.0-alpha.7"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
   }
 }
