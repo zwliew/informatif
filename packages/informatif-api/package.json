@@ -5,8 +5,8 @@
   "description": "The Informatif API.",
   "main": "index.mjs",
   "scripts": {
-    "start": "node --experimental-modules index.mjs NODE_ENV=production",
-    "dev": "nodemon --experimental-modules index.mjs"
+    "start": "node -r dotenv/config --experimental-modules index.mjs NODE_ENV=production",
+    "dev": "nodemon -r dotenv/config --experimental-modules index.mjs"
   },
   "repository": {
     "type": "git",
@@ -27,7 +27,8 @@
   },
   "homepage": "https://github.com/informatif/api#readme",
   "dependencies": {
-    "express": "^5.0.0-alpha.7"
+    "dotenv": "^6.2.0",
+    "koa": "^2.7.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.10"
