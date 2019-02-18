@@ -18,7 +18,16 @@ function get(key) {
   return cache.get(key);
 }
 
+async function getElseSetWith(key, callback) {
+  const cached = get(key);
+  if (cached) return cached;
+  const val = await callback();
+  set(key, val);
+  return val;
+}
+
 export default {
   set,
-  get
+  get,
+  getElseSetWith
 };
