@@ -3,7 +3,7 @@ import LRU from "lru-cache";
 const hourInMsec = 60 * 60 * 1000;
 
 const cache = new LRU({
-  max: 300,
+  max: 450,
   maxAge: hourInMsec,
   length(n, _) {
     return n.length;
