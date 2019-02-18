@@ -1,10 +1,10 @@
 import Router from "koa-router";
 import {
-  handleGitHub,
   handleHackerNews,
   handleReddit,
   handleGlobalNews,
-  handleStackOverflow
+  handleStackOverflow,
+  handleGitHub
 } from "../handlers";
 
 const api = new Router({
