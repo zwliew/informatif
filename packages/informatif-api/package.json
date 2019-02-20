@@ -1,6 +1,6 @@
 {
   "name": "informatif-api",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "description": "The Informatif API.",
   "main": "index.mjs",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/informatif/api.git"
+    "url": "git+https://github.com/informatif/informatif-api.git"
   },
   "keywords": [
     "informatif",
@@ -23,9 +23,9 @@
   "author": "Zhao Wei Liew <zhaoweiliew@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/informatif/api/issues"
+    "url": "https://github.com/informatif/informatif-api/issues"
   },
-  "homepage": "https://github.com/informatif/api#readme",
+  "homepage": "https://github.com/informatif/informatif-api#readme",
   "dependencies": {
     "@koa/cors": "2.2.3",
     "dotenv": "6.2.0",
