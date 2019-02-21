@@ -1,4 +1,5 @@
 import fetch from "node-fetch";
+import he from "he";
 import Parser from "rss-parser";
 import cache from "./cache";
 
@@ -12,7 +13,7 @@ export async function handleStackOverflow(page) {
       ({ link, title, score, answer_count, question_id, owner }) => ({
         id: question_id,
         link,
-        title,
+        title: he.decode(title),
         author: owner.display_name,
         points: score,
         responseCount: answer_count
