@@ -102,6 +102,7 @@ export async function handleMedium() {
     return json.map(({ guid, link, creator, title }) => ({
       id: guid,
       link,
+      altLink: `https://outline.com/${link}`,
       title,
       author: creator
     }));
