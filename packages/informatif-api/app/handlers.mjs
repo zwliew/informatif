@@ -1,5 +1,5 @@
-import fetch from "node-fetch";
 import he from "he";
+import fetch from "node-fetch";
 import Parser from "rss-parser";
 import cache from "./cache";
 
@@ -81,7 +81,7 @@ export async function handleGlobalNews(page) {
 
 export async function handleGitHub() {
   const items = await cache.getElseSetWith("gh-1", async () => {
-    const res = await fetch(`https://github-trending-api.now.sh/repositories`);
+    const res = await fetch("https://github-trending-api.now.sh/repositories");
     const json = await res.json();
     return json.map(({ url, author, name, stars, description }) => ({
       id: url,
@@ -90,6 +90,20 @@ export async function handleGitHub() {
       author,
       description,
       points: stars
+    }));
+  });
+  return items;
+}
+
+export async function handleMedium() {
+  const items = await cache.getElseSetWith("medium-1", async () => {
+    const res = await fetch("https://medium.com/feed/topic/popular");
+    const json = (await parser.parseString(await res.text())).items;
+    return json.map(({ guid, link, creator, title }) => ({
+      id: guid,
+      link,
+      title,
+      author: creator
     }));
   });
   return items;

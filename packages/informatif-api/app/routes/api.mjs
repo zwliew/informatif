@@ -1,10 +1,11 @@
 import Router from "koa-router";
 import {
-  handleHackerNews,
-  handleReddit,
+  handleGitHub,
   handleGlobalNews,
-  handleStackOverflow,
-  handleGitHub
+  handleHackerNews,
+  handleMedium,
+  handleReddit,
+  handleStackOverflow
 } from "../handlers";
 
 const api = new Router({
@@ -23,6 +24,10 @@ api.get("/gh", async (ctx, _) => {
 api.get("/so", async (ctx, _) => {
   const { page = 1 } = ctx.query;
   ctx.body = await handleStackOverflow(page);
+});
+
+api.get("/medium", async (ctx, _) => {
+  ctx.body = await handleMedium();
 });
 
 api.get("/reddit", async (ctx, _) => {
