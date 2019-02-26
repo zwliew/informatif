@@ -103,6 +103,7 @@ export async function handleMedium() {
       id: guid,
       link,
       altLink: `https://outline.com/${link}`,
+      altLinkName: "Outline",
       title,
       author: creator
     }));
