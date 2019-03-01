@@ -6,7 +6,8 @@
   "main": "index.mjs",
   "scripts": {
     "start": "node -r dotenv/config --experimental-modules index.mjs NODE_ENV=production",
-    "dev": "nodemon -r dotenv/config --experimental-modules index.mjs"
+    "dev": "nodemon -r dotenv/config --experimental-modules index.mjs",
+    "deploy": "now"
   },
   "repository": {
     "type": "git",
@@ -39,7 +40,8 @@
     "rss-parser": "3.6.3"
   },
   "devDependencies": {
-    "nodemon": "1.18.10"
+    "nodemon": "1.18.10",
+    "now": "14.0.2"
   },
   "engines": {
     "node": "11.10.1",

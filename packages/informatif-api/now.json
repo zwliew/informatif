@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "alias": ["informatif-api.now.sh"],
+  "env": {
+    "GLOBAL_NEWS_API_KEY": "@global-news-api-key"
+  },
+  "builds": [
+    {
+      "src": "index.mjs",
+      "use": "@now/node-server"
+    }
+  ],
+  "routes": [
+    {
+      "src": "^/(.*)",
+      "dest": "/index.mjs"
+    }
+  ]
+}
