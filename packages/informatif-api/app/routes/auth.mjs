@@ -5,6 +5,7 @@ const auth = new Router();
 
 const whitelistedOrigins = [
   "https://informatif.netlify.com",
+  "https://informatif.now.sh",
   "http://localhost:3000"
 ];
 auth.use(
