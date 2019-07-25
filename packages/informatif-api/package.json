@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "nodemon": "1.19.1",
-    "now": "15.8.5"
+    "now": "15.8.6"
   },
   "engines": {
     "node": "10.x",
