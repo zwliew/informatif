@@ -33,7 +33,7 @@
     "he": "1.2.0",
     "koa": "2.7.0",
     "koa-compress": "3.0.0",
-    "koa-helmet": "4.2.0",
+    "koa-helmet": "5.0.0",
     "koa-router": "7.4.0",
     "lru-cache": "5.1.1",
     "node-fetch": "2.6.0",
