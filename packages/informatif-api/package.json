@@ -40,7 +40,7 @@
     "rss-parser": "3.7.3"
   },
   "devDependencies": {
-    "nodemon": "1.19.3",
+    "nodemon": "1.19.4",
     "now": "16.4.3"
   },
   "engines": {
