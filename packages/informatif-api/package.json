@@ -37,7 +37,7 @@
     "koa-router": "7.4.0",
     "lru-cache": "5.1.1",
     "node-fetch": "2.6.0",
-    "rss-parser": "3.7.3"
+    "rss-parser": "3.7.5"
   },
   "devDependencies": {
     "nodemon": "2.0.2",
