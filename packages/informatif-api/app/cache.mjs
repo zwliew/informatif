@@ -7,7 +7,7 @@ const cache = new LRU({
   maxAge: hourInMsec,
   length(n, _) {
     return n.length;
-  }
+  },
 });
 
 function set(key, val) {
@@ -29,5 +29,5 @@ async function getElseSetWith(key, callback) {
 export default {
   set,
   get,
-  getElseSetWith
+  getElseSetWith,
 };

@@ -7,7 +7,7 @@ const whitelistedOrigins = [
   "https://informatif.netlify.com",
   "https://informatif.netlify.app",
   "https://informatif.now.sh",
-  "http://localhost:3000"
+  "http://localhost:3000",
 ];
 auth.use(
   cors({
@@ -17,7 +17,7 @@ auth.use(
         return requestOrigin;
       }
     },
-    allowMethods: "GET"
+    allowMethods: "GET",
   })
 );
 

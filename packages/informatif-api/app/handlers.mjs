@@ -16,7 +16,7 @@ export async function handleStackOverflow(page) {
         title: he.decode(title),
         author: owner.display_name,
         points: score,
-        responseCount: answer_count
+        responseCount: answer_count,
       })
     );
   });
@@ -33,7 +33,7 @@ export async function handleHackerNews(page) {
       title,
       author: user,
       points,
-      responseCount: comments_count
+      responseCount: comments_count,
     }));
   });
   return items;
@@ -49,7 +49,7 @@ export async function handleReddit() {
       id,
       link,
       title,
-      author
+      author,
     }));
   });
   return items;
@@ -63,8 +63,8 @@ export async function handleGlobalNews(page) {
       `https://newsapi.org/v2/top-headlines?language=en&page=${page}`,
       {
         headers: {
-          Authorization: GLOBAL_NEWS_API_KEY
-        }
+          Authorization: GLOBAL_NEWS_API_KEY,
+        },
       }
     );
     const json = (await res.json()).articles;
@@ -73,7 +73,7 @@ export async function handleGlobalNews(page) {
       link: url,
       title,
       author: source.name,
-      responseCount: comments_count
+      responseCount: comments_count,
     }));
   });
   return items;
@@ -89,7 +89,7 @@ export async function handleGitHub() {
       title: name,
       author,
       description,
-      points: stars
+      points: stars,
     }));
   });
   return items;
@@ -105,7 +105,7 @@ export async function handleMedium() {
       altLink: `https://outline.com/${link}`,
       altLinkName: "Outline",
       title,
-      author: creator
+      author: creator,
     }));
   });
   return items;

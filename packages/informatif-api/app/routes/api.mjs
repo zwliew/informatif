@@ -5,11 +5,11 @@ import {
   handleHackerNews,
   handleMedium,
   handleReddit,
-  handleStackOverflow
+  handleStackOverflow,
 } from "../handlers";
 
 const api = new Router({
-  prefix: "/api/v1"
+  prefix: "/api/v1",
 });
 
 api.get("/hn", async (ctx, _) => {
