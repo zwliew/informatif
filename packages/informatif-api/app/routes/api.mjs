@@ -6,7 +6,7 @@ import {
   handleMedium,
   handleReddit,
   handleStackOverflow,
-} from "../handlers.mjs";
+} from "../handlers";
 
 const api = new Router({
   prefix: "/api/v1",
