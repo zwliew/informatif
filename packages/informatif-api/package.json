@@ -29,12 +29,12 @@
   "homepage": "https://github.com/informatif/informatif-api#readme",
   "dependencies": {
     "@koa/cors": "3.0.0",
+    "@koa/router": "9.0.0",
     "dotenv": "8.2.0",
     "he": "1.2.0",
     "koa": "2.11.0",
     "koa-compress": "3.0.0",
     "koa-helmet": "5.2.0",
-    "koa-router": "7.4.0",
     "lru-cache": "5.1.1",
     "node-fetch": "2.6.0",
     "rss-parser": "3.7.6"
