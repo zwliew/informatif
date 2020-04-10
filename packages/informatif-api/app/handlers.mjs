@@ -1,7 +1,7 @@
 import he from "he";
 import fetch from "node-fetch";
 import Parser from "rss-parser";
-import cache from "./cache";
+import cache from "./cache.mjs";
 
 export async function handleStackOverflow(page) {
   const items = await cache.getElseSetWith(`so-${page}`, async () => {

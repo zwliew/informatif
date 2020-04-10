@@ -1,7 +1,7 @@
 import Koa from "koa";
 import compress from "koa-compress";
 import helmet from "koa-helmet";
-import router from "./routes";
+import router from "./routes/index.mjs";
 
 const app = new Koa();
 

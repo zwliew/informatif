@@ -1,6 +1,6 @@
 import Router from "@koa/router";
-import api from "./api";
-import auth from "./auth";
+import api from "./api.mjs";
+import auth from "./auth.mjs";
 
 const router = new Router();
 
