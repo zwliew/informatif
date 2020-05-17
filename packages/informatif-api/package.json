@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/informatif/informatif-api#readme",
   "dependencies": {
-    "@koa/cors": "3.0.0",
+    "@koa/cors": "3.1.0",
     "@koa/router": "8.0.8",
     "dotenv": "8.2.0",
     "he": "1.2.0",
