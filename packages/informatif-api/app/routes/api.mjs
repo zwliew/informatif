@@ -9,7 +9,7 @@ import {
 } from "../handlers.mjs";
 
 const api = new Router({
-  prefix: "/api/v1",
+  prefix: "/informatif/api/v1",
 });
 
 api.get("/hn", async (ctx, _) => {
