@@ -5,9 +5,8 @@
   "description": "The Informatif API.",
   "main": "index.mjs",
   "scripts": {
-    "start": "node -r dotenv/config --experimental-modules index.mjs NODE_ENV=production",
-    "dev": "nodemon -r dotenv/config --experimental-modules index.mjs",
-    "deploy": "now"
+    "start": "node -r dotenv/config index.mjs NODE_ENV=production",
+    "dev": "nodemon -r dotenv/config index.mjs"
   },
   "repository": {
     "type": "git",
@@ -35,16 +34,12 @@
     "koa": "2.12.0",
     "koa-compress": "4.0.1",
     "koa-helmet": "5.2.0",
+    "koa-logger": "3.2.1",
     "lru-cache": "5.1.1",
     "node-fetch": "2.6.0",
     "rss-parser": "3.8.0"
   },
   "devDependencies": {
-    "nodemon": "2.0.4",
-    "now": "19.0.1"
-  },
-  "engines": {
-    "node": "10.x",
-    "npm": "6.14.5"
+    "nodemon": "2.0.4"
   }
 }
