@@ -37,7 +37,7 @@
     "koa-logger": "3.2.1",
     "lru-cache": "6.0.0",
     "node-fetch": "2.6.0",
-    "rss-parser": "3.8.0"
+    "rss-parser": "3.9.0"
   },
   "devDependencies": {
     "nodemon": "2.0.4"
