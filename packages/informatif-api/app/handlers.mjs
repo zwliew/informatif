@@ -27,9 +27,10 @@ export async function handleHackerNews(page) {
   const items = await cache.getElseSetWith(`hn-${page}`, async () => {
     const res = await fetch(`https://api.hnpwa.com/v0/news/${page}.json`);
     const json = await res.json();
-    return json.map(({ title, points, comments_count, id, user }) => ({
+    return json.map(({ title, points, comments_count, id, user, url }) => ({
       id,
       link: `https://news.ycombinator.com/item?id=${id}`,
+      origLink: url,
       title,
       author: user,
       points,
