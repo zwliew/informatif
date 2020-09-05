@@ -36,7 +36,7 @@
     "koa-helmet": "5.2.0",
     "koa-logger": "3.2.1",
     "lru-cache": "6.0.0",
-    "node-fetch": "2.6.0",
+    "node-fetch": "2.6.1",
     "rss-parser": "3.9.0"
   },
   "devDependencies": {
