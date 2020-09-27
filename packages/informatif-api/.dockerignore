@@ -1,0 +1,9 @@
+node_modules
+npm-debug.log
+docker-compose.yml
+Dockerfile
+LICENSE
+README.md
+renovate.json
+.gitignore
+.env.example
