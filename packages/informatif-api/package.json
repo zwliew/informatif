@@ -31,11 +31,11 @@
     "@koa/router": "9.4.0",
     "dotenv": "8.2.0",
     "he": "1.2.0",
+    "ioredis": "4.17.3",
     "koa": "2.13.0",
     "koa-compress": "5.0.1",
     "koa-helmet": "5.2.0",
     "koa-logger": "3.2.1",
-    "lru-cache": "6.0.0",
     "node-fetch": "2.6.1",
     "rss-parser": "3.9.0"
   },

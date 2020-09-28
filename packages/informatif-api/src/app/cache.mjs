@@ -1,33 +1,35 @@
-import LRU from "lru-cache";
+import Redis from "ioredis";
 
-const hourInMsec = 60 * 60 * 1000;
+const SEC_PER_HOUR = 3600;
 
-const cache = new LRU({
-  max: 450,
-  maxAge: hourInMsec,
-  length(n, _) {
-    return n.length;
-  },
-});
+const redis = new Redis({ host: "redis" });
+redis.config("SET", "maxmemory", "50mb");
+redis.config("SET", "maxmemory-policy", "allkeys-lfu");
 
-function set(key, val) {
-  cache.set(key, val);
+async function tryCatch(fn) {
+  try {
+    return await fn();
+  } catch (err) {
+    console.error(`Cache error: ${err}`);
+  }
 }
 
-function get(key) {
-  return cache.get(key);
+async function has(key) {
+  return tryCatch(async () => await redis.exists(key)) || false;
 }
 
-async function getElseSetWith(key, callback) {
-  const cached = get(key);
-  if (cached) return cached;
-  const val = await callback();
-  set(key, val);
-  return val;
+async function set(key, val) {
+  tryCatch(async () => {
+    await redis.setex(key, SEC_PER_HOUR, val);
+  });
+}
+
+async function get(key) {
+  return tryCatch(async () => await redis.get(key));
 }
 
 export default {
+  has,
   set,
   get,
-  getElseSetWith,
 };
