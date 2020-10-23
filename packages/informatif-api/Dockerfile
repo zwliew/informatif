@@ -1,4 +1,4 @@
-FROM node:14-alpine3.12
+FROM node:15-alpine3.12
 WORKDIR /usr/src/app
 EXPOSE $PORT
 RUN npm i -g nodemon
