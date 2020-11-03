@@ -29,7 +29,3 @@ Run `npm run dev` to start a development server with hot reloading.
 # Running in production
 
 Run `npm start` to start a production server.
-
-## Other links
-
-[Informatif Web](https://github.com/informatif/informatif/)
