@@ -87,14 +87,14 @@ export async function handleGlobalNews(page) {
 
 export async function handleGitHub() {
   return await getElseSetWith("gh-1", async () => {
-    const res = await fetch("https://github-trending-api.now.sh/repositories");
+    const res = await fetch("https://trendings.herokuapp.com/repo");
     const json = await res.json();
-    return json.map(({ url, author, name, stars, description }) => ({
-      id: url,
-      link: url,
-      title: name,
-      author,
-      description,
+    return json.items.map(({ repo, repo_link, desc, stars }) => ({
+      id: repo,
+      link: repo_link,
+      title: repo.substr(repo.indexOf("/") + 1),
+      author: repo.substr(0, repo.indexOf("/")),
+      description: desc,
       points: stars,
     }));
   });
