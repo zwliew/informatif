@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useReducer } from "react";
 import { Status, Item } from "./constants";
 
+const { API_URL } = process.env;
+
 interface State {
   status: Status;
   items: Item[];
@@ -20,7 +22,7 @@ enum ActionType {
   loadMore,
   refreshed,
   loadedMore,
-  idle
+  idle,
 }
 
 const abortErrorName = "AbortError";
@@ -31,7 +33,7 @@ export function useApi(path: string) {
   const [state, dispatch] = useReducer(reducer, {
     status: Status.refreshing,
     items: [],
-    page: 1
+    page: 1,
   });
   const refresh = useCallback(async () => {
     dispatch({ type: ActionType.refresh });
@@ -40,7 +42,7 @@ export function useApi(path: string) {
       const newItems = await load({ path, page: newPage });
       dispatch({
         type: ActionType.refreshed,
-        payload: { items: newItems, page: newPage }
+        payload: { items: newItems, page: newPage },
       });
     } catch (err) {
       if (err.name !== abortErrorName) {
@@ -56,7 +58,7 @@ export function useApi(path: string) {
       const newItems = await load({ path, page: newPage });
       dispatch({
         type: ActionType.loadedMore,
-        payload: { items: newItems, page: newPage }
+        payload: { items: newItems, page: newPage },
       });
     } catch (err) {
       if (err.name !== abortErrorName) {
@@ -80,7 +82,7 @@ export function useApi(path: string) {
   return {
     items: state.items,
     status: state.status,
-    loadMore
+    loadMore,
   };
 }
 
@@ -89,31 +91,31 @@ function reducer(state: State, action: Action) {
     case ActionType.refresh:
       return {
         ...state,
-        status: Status.refreshing
+        status: Status.refreshing,
       };
     case ActionType.loadMore:
       return {
         ...state,
-        status: Status.loadingMore
+        status: Status.loadingMore,
       };
     case ActionType.refreshed:
       if (!action.payload) {
         return {
           ...state,
-          status: Status.idling
+          status: Status.idling,
         };
       }
       return {
         ...state,
         status: Status.idling,
         items: action.payload.items,
-        page: action.payload.page
+        page: action.payload.page,
       };
     case ActionType.loadedMore:
       if (!action.payload) {
         return {
           ...state,
-          status: Status.idling
+          status: Status.idling,
         };
       }
       // De-duplicate the arrays
@@ -133,12 +135,12 @@ function reducer(state: State, action: Action) {
         ...state,
         status: Status.idling,
         items: reconciledItems,
-        page: action.payload.page
+        page: action.payload.page,
       };
     case ActionType.idle:
       return {
         ...state,
-        status: Status.idling
+        status: Status.idling,
       };
     default:
       return state;
@@ -151,11 +153,8 @@ async function load({ path, page }: { path: string; page: number }) {
   }
   abortController = new AbortController();
 
-  const res = await fetch(
-    `https://zwliew.com/informatif/api/v1/${path}?page=${page}`,
-    {
-      signal: abortController.signal
-    }
-  );
+  const res = await fetch(`${API_URL}/${path}?page=${page}`, {
+    signal: abortController.signal,
+  });
   return res.json();
 }
