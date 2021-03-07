@@ -4,7 +4,7 @@ import cors from "@koa/cors";
 const auth = new Router();
 
 const whitelistedOrigins = [
-  "https://informatif.netlify.app",
+  "https://informatif.zwliew.com",
   "http://localhost:3000",
 ];
 auth.use(
