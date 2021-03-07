@@ -1,10 +1,4 @@
-import Redis from "ioredis";
-
-const SEC_PER_HOUR = 3600;
-
-const redis = new Redis({ host: "redis" });
-redis.config("SET", "maxmemory", "50mb");
-redis.config("SET", "maxmemory-policy", "allkeys-lfu");
+import LruCache from "./lru";
 
 async function tryCatch<T>(fn: () => Promise<T>): Promise<any> {
   try {
@@ -15,17 +9,17 @@ async function tryCatch<T>(fn: () => Promise<T>): Promise<any> {
 }
 
 async function has(key: string): Promise<any> {
-  return tryCatch(async () => await redis.exists(key)) || false;
+  return tryCatch(async () => LruCache.exists(key)) || false;
 }
 
 async function set(key: string, val: string): Promise<any> {
   tryCatch(async () => {
-    await redis.setex(key, SEC_PER_HOUR, val);
+    LruCache.set(key, val);
   });
 }
 
 async function get(key: string): Promise<string> {
-  return tryCatch(async () => await redis.get(key));
+  return tryCatch(async () => LruCache.get(key));
 }
 
 export default {
