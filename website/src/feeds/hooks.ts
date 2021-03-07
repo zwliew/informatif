@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useReducer } from "react";
 import { Status, Item } from "./constants";
 
-const { API_URL } = process.env;
+const { REACT_APP_API_URL: API_URL } = process.env;
 
 interface State {
   status: Status;
