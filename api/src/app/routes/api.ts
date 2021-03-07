@@ -10,7 +10,7 @@ import {
 } from "../handlers";
 
 const api = new Router({
-  prefix: "/informatif/api/v1",
+  prefix: "/v1",
 });
 
 api.get("/hn", async (ctx: Context, _: Next) => {
