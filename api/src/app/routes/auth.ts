@@ -1,5 +1,6 @@
 import Router from "@koa/router";
 import cors from "@koa/cors";
+import type { Context } from "koa";
 
 const auth = new Router();
 
@@ -9,11 +10,12 @@ const whitelistedOrigins = [
 ];
 auth.use(
   cors({
-    origin(ctx) {
+    origin(ctx: Context) {
       const requestOrigin = ctx.header.origin;
-      if (whitelistedOrigins.includes(requestOrigin)) {
+      if (requestOrigin && whitelistedOrigins.includes(requestOrigin)) {
         return requestOrigin;
       }
+      return whitelistedOrigins[0];
     },
     allowMethods: "GET",
   })

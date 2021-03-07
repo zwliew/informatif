@@ -1,9 +1,9 @@
 import he from "he";
 import fetch from "node-fetch";
 import Parser from "rss-parser";
-import cache from "./cache.mjs";
+import cache from "./cache";
 
-async function getElseSetWith(key, callback) {
+async function getElseSetWith(key: string, callback: () => any) {
   if (await cache.has(key)) {
     return await cache.get(key);
   }
@@ -12,14 +12,14 @@ async function getElseSetWith(key, callback) {
   return res;
 }
 
-export async function handleStackOverflow(page) {
+export async function handleStackOverflow(page: number | string) {
   return await getElseSetWith(`so-${page}`, async () => {
     const res = await fetch(
       `https://api.stackexchange.com/2.2/questions?page=${page}&order=desc&sort=hot&site=stackoverflow`
     );
     const json = (await res.json()).items;
     return json.map(
-      ({ link, title, score, answer_count, question_id, owner }) => ({
+      ({ link, title, score, answer_count, question_id, owner }: any) => ({
         id: question_id,
         link,
         title: he.decode(title),
@@ -31,19 +31,21 @@ export async function handleStackOverflow(page) {
   });
 }
 
-export async function handleHackerNews(page) {
+export async function handleHackerNews(page: number | string) {
   return await getElseSetWith(`hn-${page}`, async () => {
     const res = await fetch(`https://api.hnpwa.com/v0/news/${page}.json`);
     const json = await res.json();
-    return json.map(({ title, points, comments_count, id, user, url }) => ({
-      id,
-      link: `https://news.ycombinator.com/item?id=${id}`,
-      origLink: url,
-      title,
-      author: user,
-      points,
-      responseCount: comments_count,
-    }));
+    return json.map(
+      ({ title, points, comments_count, id, user, url }: any) => ({
+        id,
+        link: `https://news.ycombinator.com/item?id=${id}`,
+        origLink: url,
+        title,
+        author: user,
+        points,
+        responseCount: comments_count,
+      })
+    );
   });
 }
 
@@ -64,18 +66,18 @@ export async function handleReddit() {
 
 const { GLOBAL_NEWS_API_KEY } = process.env;
 
-export async function handleGlobalNews(page) {
+export async function handleGlobalNews(page: number | string) {
   return await getElseSetWith(`global-${page}`, async () => {
     const res = await fetch(
       `https://newsapi.org/v2/top-headlines?language=en&page=${page}`,
       {
         headers: {
           Authorization: GLOBAL_NEWS_API_KEY,
-        },
+        } as any,
       }
     );
     const json = (await res.json()).articles;
-    return json.map(({ title, comments_count, source, url }) => ({
+    return json.map(({ title, comments_count, source, url }: any) => ({
       id: `${source.name} - ${title}`,
       link: url,
       title,
@@ -89,7 +91,7 @@ export async function handleGitHub() {
   return await getElseSetWith("gh-1", async () => {
     const res = await fetch("https://trendings.herokuapp.com/repo");
     const json = await res.json();
-    return json.items.map(({ repo, repo_link, desc, stars }) => ({
+    return json.items.map(({ repo, repo_link, desc, stars }: any) => ({
       id: repo,
       link: repo_link,
       title: repo.substr(repo.indexOf("/") + 1),

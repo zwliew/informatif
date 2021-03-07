@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "description": "The Informatif API.",
-  "main": "src/index.mjs",
+  "main": "build/index.js",
   "scripts": {
-    "start": "node -r dotenv/config index.mjs NODE_ENV=production",
-    "dev": "nodemon -r dotenv/config index.mjs",
+    "build": "rimraf build && tsc",
+    "start": "node build/index.js NODE_ENV=production",
+    "dev": "tsnd src/index.ts",
     "start:docker": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build",
     "dev:docker": "docker-compose -f docker-compose.yml up --build"
   },
@@ -42,6 +43,17 @@
     "rss-parser": "^3.12.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "@types/he": "^1.1.1",
+    "@types/ioredis": "^4.22.0",
+    "@types/koa": "^2.13.1",
+    "@types/koa__cors": "^3.0.2",
+    "@types/koa__router": "^8.0.4",
+    "@types/koa-compress": "^4.0.1",
+    "@types/koa-helmet": "^6.0.2",
+    "@types/koa-logger": "^3.1.1",
+    "@types/node": "^14.14.32",
+    "@types/node-fetch": "^2.5.8",
+    "ts-node-dev": "^1.1.6",
+    "typescript": "^4.2.3"
   }
 }
