@@ -8,5 +8,5 @@ export const FEED_ID_TO_TITLE: {
   so: "Stack Overflow",
   medium: "Medium",
   reddit: "Reddit",
-  global: "Global News"
+  global: "Global News",
 };

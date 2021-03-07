@@ -1,7 +1,7 @@
 export enum Status {
   refreshing,
   loadingMore,
-  idling
+  idling,
 }
 
 export interface Item {

@@ -8,6 +8,6 @@ export const useDisplayedFeeds: {
     initialState: T
   ) => [T, (newState: T | ((prevState: T) => T)) => void];
 } = {};
-Object.keys(FEED_ID_TO_TITLE).forEach(id => {
+Object.keys(FEED_ID_TO_TITLE).forEach((id) => {
   useDisplayedFeeds[id] = createPersistedState(`${id}-displayed`);
 });

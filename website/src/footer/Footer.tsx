@@ -6,13 +6,13 @@ import {
   FaNewspaper,
   FaReddit,
   FaStackOverflow,
-  FaMedium
+  FaMedium,
 } from "react-icons/fa";
 import styled from "styled-components/macro";
 import {
   DEFAULT_DISPLAYED_FEED,
   DEFAULT_LEFT_HANDED_MODE,
-  FEED_ID_TO_TITLE
+  FEED_ID_TO_TITLE,
 } from "../preferences/constants";
 import { useDisplayedFeeds, useLeftHandedMode } from "../preferences/hooks";
 import AppNavLink from "./AppNavLink";
@@ -46,7 +46,7 @@ const feedIdToIcon: {
   so: <FaStackOverflow />,
   reddit: <FaReddit />,
   global: <FaNewspaper />,
-  medium: <FaMedium />
+  medium: <FaMedium />,
 };
 
 export default function Footer() {
@@ -56,7 +56,7 @@ export default function Footer() {
     <StyledFooter>
       {!leftHandedModeEnabled && <PrefsLink />}
       <div>
-        {Object.keys(FEED_ID_TO_TITLE).map(id => {
+        {Object.keys(FEED_ID_TO_TITLE).map((id) => {
           const [displayed] = useDisplayedFeeds[id](DEFAULT_DISPLAYED_FEED);
           return (
             displayed && (

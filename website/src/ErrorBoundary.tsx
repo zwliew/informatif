@@ -4,12 +4,12 @@ import Column from "./presentation/Column";
 
 export default class ErrorBoundary extends Component {
   state = {
-    hasError: false
+    hasError: false,
   };
 
   static getDerivedStateFromError() {
     return {
-      hasError: true
+      hasError: true,
     };
   }
 

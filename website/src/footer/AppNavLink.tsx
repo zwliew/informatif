@@ -23,7 +23,7 @@ const StyledAppNavLink = styled(NavLink)`
 export default function AppNavLink({
   children,
   title,
-  to
+  to,
 }: {
   children: {};
   title: string;

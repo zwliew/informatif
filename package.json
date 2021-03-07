@@ -1,0 +1,22 @@
+{
+  "name": "informatif",
+  "version": "1.0.0",
+  "description": "Glanceable headlines for the media sources you care about.",
+  "main": "index.js",
+  "scripts": {
+    "lint": "prettier --write '**/*.{tsx,jsx,ts,js,css,md}'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zwliew/informatif.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zwliew/informatif/issues"
+  },
+  "homepage": "https://github.com/zwliew/informatif#readme",
+  "devDependencies": {
+    "prettier": "^2.2.1"
+  }
+}
