@@ -5,7 +5,7 @@
   "description": "Informatif: glanceable headlines for the media sources you care about.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/informatif/informatif.git"
+    "url": "git+https://github.com/zwliew/informatif.git"
   },
   "author": "Zhao Wei Liew <zhaoweiliew@gmail.com>",
   "license": "MIT",
