@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import axe from "@axe-core/react";
+import { ChakraProvider } from "@chakra-ui/react";
 
 if (process.env.NODE_ENV !== "production") {
   axe(React, ReactDOM, 1000);
@@ -11,7 +12,9 @@ if (process.env.NODE_ENV !== "production") {
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ChakraProvider>
+      <App />
+    </ChakraProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
