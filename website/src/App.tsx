@@ -1,5 +1,7 @@
+import { Switch, Route } from "react-router-dom";
+
 function App() {
-  return <div>Hello World!</div>;
+  return <Switch></Switch>;
 }
 
 export default App;

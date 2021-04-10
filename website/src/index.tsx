@@ -5,6 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import axe from "@axe-core/react";
 import { ChakraProvider } from "@chakra-ui/react";
+import { BrowserRouter } from "react-router-dom";
 
 if (process.env.NODE_ENV !== "production") {
   axe(React, ReactDOM, 1000);
@@ -13,7 +14,9 @@ if (process.env.NODE_ENV !== "production") {
 ReactDOM.render(
   <React.StrictMode>
     <ChakraProvider>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </ChakraProvider>
   </React.StrictMode>,
   document.getElementById("root")
