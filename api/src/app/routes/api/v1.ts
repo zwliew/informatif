@@ -7,11 +7,9 @@ import {
   handleMedium,
   handleReddit,
   handleStackOverflow,
-} from "../handlers";
+} from "../../handlers";
 
-const api = new Router({
-  prefix: "/v1",
-});
+const api = new Router();
 
 api.get("/hn", async (ctx: Context, _: Next) => {
   const { page = 1 } = ctx.query;
