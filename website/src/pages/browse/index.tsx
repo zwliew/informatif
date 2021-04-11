@@ -55,32 +55,35 @@ function StoryListItem({ story }: { story: Story }) {
   );
 }
 
-async function fetchPage({ pageParam = 1 }) {
-  const result = await fetch(`${REACT_APP_API_URL}/hn?page=${pageParam}`);
+async function fetchPage({
+  pageParam = 1,
+}): Promise<{ data: Story[]; nextPage: number }> {
+  const result = await fetch(`${REACT_APP_API_URL}/v2/hn?page=${pageParam}`);
   return result.json();
 }
 
 function BrowsePage() {
-  const { data, isFetchingNextPage, fetchNextPage } = useInfiniteQuery(
-    "top",
-    fetchPage,
-    {
-      getNextPageParam: (_, pages) => pages.length + 1,
-    }
-  );
+  const {
+    data,
+    isFetchingNextPage,
+    fetchNextPage,
+    hasNextPage,
+  } = useInfiniteQuery("top", fetchPage, {
+    getNextPageParam: (lastPage, _) => lastPage.nextPage ?? undefined,
+  });
 
   let display = <Text>Error!</Text>;
   if (data) {
     display = (
       <>
-        {data.pages.flat().map((story: Story) => (
-          <StoryListItem story={story} key={story.id} />
-        ))}
+        {data.pages
+          .flatMap((page) => page.data)
+          .map((story: Story) => (
+            <StoryListItem story={story} key={story.id} />
+          ))}
       </>
     );
   }
-
-  console.log(isFetchingNextPage);
 
   return (
     <Flex
@@ -91,6 +94,7 @@ function BrowsePage() {
       <Heading marginX="auto">Hacker News - top stories</Heading>
       <Box paddingY={4}>{display}</Box>
       <Button
+        disabled={!hasNextPage}
         isLoading={isFetchingNextPage}
         loadingText="Loading"
         onClick={() => fetchNextPage()}

@@ -3,7 +3,7 @@ import type { Context, Next } from "koa";
 import {
   handleGitHub,
   handleGlobalNews,
-  handleHackerNews,
+  handleHackerNewsV1,
   handleMedium,
   handleReddit,
   handleStackOverflow,
@@ -12,11 +12,11 @@ import {
 const api = new Router();
 
 api.get("/hn", async (ctx: Context, _: Next) => {
-  const { page = 1 } = ctx.query;
-  if (page instanceof Array) {
+  const { page } = ctx.query;
+  if (page === undefined || page instanceof Array) {
     ctx.throw(400, "Invalid page");
   }
-  ctx.body = await handleHackerNews(page);
+  ctx.body = await handleHackerNewsV1(page);
 });
 
 api.get("/gh", async (ctx: Context, _: Next) => {

@@ -31,7 +31,33 @@ export async function handleStackOverflow(page: number | string) {
   });
 }
 
-export async function handleHackerNews(page: number | string) {
+export async function handleHackerNewsV2(pageStr: string) {
+  const page = parseInt(pageStr);
+  if (page < 1 || page > 10) {
+    return { data: [], nextPage: null };
+  }
+  return await getElseSetWith(`hn-${page}`, async () => {
+    const res = await fetch(`https://api.hnpwa.com/v0/news/${page}.json`);
+    const json = await res.json();
+    return {
+      data: json.map(
+        ({ title, points, comments_count, id, user, url }: any) => ({
+          id,
+          link: `https://news.ycombinator.com/item?id=${id}`,
+          origLink: url,
+          title,
+          author: user,
+          points,
+          responseCount: comments_count,
+        })
+      ),
+      nextPage: page < 10 ? page + 1 : null,
+    };
+  });
+}
+
+export async function handleHackerNewsV1(pageStr: string) {
+  const page = parseInt(pageStr);
   return await getElseSetWith(`hn-${page}`, async () => {
     const res = await fetch(`https://api.hnpwa.com/v0/news/${page}.json`);
     const json = await res.json();
