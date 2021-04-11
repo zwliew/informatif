@@ -1,3 +1,4 @@
+import { ReactQueryDevtools } from "react-query/devtools";
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
@@ -6,18 +7,24 @@ import reportWebVitals from "./reportWebVitals";
 import axe from "@axe-core/react";
 import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 if (process.env.NODE_ENV !== "production") {
   axe(React, ReactDOM, 1000);
 }
 
+const queryClient = new QueryClient();
+
 ReactDOM.render(
   <React.StrictMode>
-    <ChakraProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </ChakraProvider>
+    <QueryClientProvider client={queryClient}>
+      <ChakraProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ChakraProvider>
+      <ReactQueryDevtools />
+    </QueryClientProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
