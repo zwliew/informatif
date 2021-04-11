@@ -5,8 +5,8 @@ import type { Context } from "koa";
 const auth = new Router();
 
 const whitelistedOrigins = [
+  "https://staging.informatif.zwliew.com",
   "https://informatif.zwliew.com",
-  "http://localhost:3000",
 ];
 auth.use(
   cors({
