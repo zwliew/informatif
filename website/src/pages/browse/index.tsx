@@ -4,6 +4,7 @@ import { MdPersonOutline, MdChatBubbleOutline } from "react-icons/md";
 import { BiUpvote } from "react-icons/bi";
 import Icon from "@chakra-ui/icon";
 import { Button } from "@chakra-ui/button";
+import { CircularProgress } from "@chakra-ui/progress";
 
 const { REACT_APP_API_URL } = process.env;
 
@@ -68,12 +69,15 @@ function BrowsePage() {
     isFetchingNextPage,
     fetchNextPage,
     hasNextPage,
+    isError,
   } = useInfiniteQuery("top", fetchPage, {
     getNextPageParam: (lastPage, _) => lastPage.nextPage ?? undefined,
   });
 
-  let display = <Text>Error!</Text>;
-  if (data) {
+  let display = <CircularProgress isIndeterminate />;
+  if (isError) {
+    display = <Text>Error!</Text>;
+  } else if (data) {
     display = (
       <>
         {data.pages
