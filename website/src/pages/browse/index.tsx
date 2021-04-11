@@ -93,14 +93,15 @@ function BrowsePage() {
     >
       <Heading marginX="auto">Hacker News - top stories</Heading>
       <Box paddingY={4}>{display}</Box>
-      <Button
-        disabled={!hasNextPage}
-        isLoading={isFetchingNextPage}
-        loadingText="Loading"
-        onClick={() => fetchNextPage()}
-      >
-        Load more
-      </Button>
+      {hasNextPage && (
+        <Button
+          isLoading={isFetchingNextPage}
+          loadingText="Loading"
+          onClick={() => fetchNextPage()}
+        >
+          Load more
+        </Button>
+      )}
     </Flex>
   );
 }
